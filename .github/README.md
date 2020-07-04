@@ -16,7 +16,7 @@ For more examples, see [Example.ard](/test/Example.ard).
 Given this code:
 
 ```arend
-\func execution => performIO
+\func execution => unsafePerformIO
     (readProc (java ++ space ++ --version) >>= print)
 ```
 

@@ -4,17 +4,17 @@
 \import IO.Meta.Paths
 \import IO.Meta.Strings
 
-\func execution => performIO
+\func execution => unsafePerformIO
     (print arendYAML)
 
-\func execution2 => performIO
+\func execution2 => unsafePerformIO
     (readFile arendYAML >>= print)
 
-\func execution3 => performIO
+\func execution3 => unsafePerformIO
     (readFile arendIoIml >>= print)
 
-\func execution4 => performIO
+\func execution4 => unsafePerformIO
     (print projectRoot)
 
-\func execution5 => performIO
+\func execution5 => unsafePerformIO
     (readProc (java ++ space ++ --version) >>= print)

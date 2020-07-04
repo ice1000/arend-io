@@ -73,7 +73,7 @@ public class IOExtension extends DefaultArendExtension {
     contributor.declare(stringsModule, new LongName("pathSeparator"),
         "The path separator, works differently on each platform.",
         Precedence.DEFAULT, new StringMeta(this, File.separator));
-    contributor.declare(module, new LongName("performIO"),
+    contributor.declare(module, new LongName("unsafePerformIO"),
         "Execute an IO action.",
         Precedence.DEFAULT, new PerformIOMeta(this));
   }
