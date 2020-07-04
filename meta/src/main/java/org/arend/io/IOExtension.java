@@ -19,11 +19,11 @@ public class IOExtension extends DefaultArendExtension {
   public ArendPrelude prelude;
   public ConcreteFactory factory;
 
-  @Dependency(module = "IO.Base", name = "List.nil")
+  @Dependency(module = "IO.FakeString", name = "List.nil")
   public CoreConstructor nil;
-  @Dependency(module = "IO.Base", name = "List.::")
+  @Dependency(module = "IO.FakeString", name = "List.::")
   public CoreConstructor cons;
-  @Dependency(module = "IO.Base", name = "String")
+  @Dependency(module = "IO.FakeString", name = "String")
   public CoreFunctionDefinition string;
   @Dependency(module = "IO.Base", name = "IO")
   public CoreDataDefinition io;
