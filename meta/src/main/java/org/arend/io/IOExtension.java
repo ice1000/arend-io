@@ -13,6 +13,8 @@ import org.arend.ext.module.ModulePath;
 import org.arend.ext.reference.Precedence;
 import org.jetbrains.annotations.NotNull;
 
+import java.nio.file.Paths;
+
 public class IOExtension extends DefaultArendExtension {
   public ArendPrelude prelude;
   public ConcreteFactory factory;
@@ -41,10 +43,13 @@ public class IOExtension extends DefaultArendExtension {
     var module = ModulePath.fromString("IO.Meta");
     contributor.declare(module, new LongName("arendYAML"),
         "The path of file `arend.yaml`.",
-        Precedence.DEFAULT, new StringMeta(this, "C:\\Users\\ice10\\git-repos\\Arend\\arend-io\\arend.yaml"));
+        Precedence.DEFAULT, new StringMeta(this, Generated.ROOT_PATH.resolve("arend.yaml").toString()));
     contributor.declare(module, new LongName("arendIoIml"),
         "The path of file `arend-io.iml`.",
-        Precedence.DEFAULT, new StringMeta(this, "C:\\Users\\ice10\\git-repos\\Arend\\arend-io\\arend-io.iml"));
+        Precedence.DEFAULT, new StringMeta(this, Generated.ROOT_PATH.resolve("arend-io.iml").toString()));
+    contributor.declare(module, new LongName("projectRoot"),
+        "The path to the project root.",
+        Precedence.DEFAULT, new StringMeta(this, Generated.ROOT));
     contributor.declare(module, new LongName("performIO"),
         "Execute an IO action.",
         Precedence.DEFAULT, new PerformIOMeta(this));
