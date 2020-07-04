@@ -1,4 +1,5 @@
-\import IO.Meta
+\import IO.Meta.Paths
+\import IO.Meta.Strings
 \import IO.FakeString
 
 \lemma test0 : projectRoot ++ nil = nil ++ projectRoot => idp
