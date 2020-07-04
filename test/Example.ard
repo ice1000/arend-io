@@ -1,5 +1,8 @@
 \import IO.Base
+\import IO.FakeString
 \import IO.Meta
+\import IO.Meta.Paths
+\import IO.Meta.Strings
 
 \func execution => performIO
     (print arendYAML)
@@ -12,3 +15,6 @@
 
 \func execution4 => performIO
     (print projectRoot)
+
+\func execution5 => performIO
+    (readProc (java ++ space ++ --version) >>= print)

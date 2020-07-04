@@ -13,12 +13,15 @@ import org.arend.ext.typechecking.TypedExpression;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class PerformIOMeta extends BaseMetaDefinition {
   private IOExtension ext;
@@ -72,6 +75,19 @@ public class PerformIOMeta extends BaseMetaDefinition {
         var sb = new StringBuilder();
         extractString((CoreConCallExpression) con.getDefCallArguments().get(0).normalize(NormalizationMode.WHNF), sb);
         return Files.readString(Paths.get(sb.toString()));
+      }
+      case "readProc": {
+        var sb = new StringBuilder();
+        extractString((CoreConCallExpression) con.getDefCallArguments().get(0).normalize(NormalizationMode.WHNF), sb);
+        var exec = new ProcessBuilder()
+            .command(sb.toString().split(" "))
+            .directory(new File(Generated.ROOT))
+            .redirectErrorStream(true)
+            .start();
+        try (var streamReader = new InputStreamReader(exec.getInputStream());
+             var reader = new BufferedReader(streamReader)) {
+          return reader.lines().collect(Collectors.joining(System.lineSeparator()));
+        }
       }
       case "writeFile": {
         var path = new StringBuilder();

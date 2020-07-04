@@ -3,7 +3,7 @@
 -- | This type corresponds to Haskell's `IO String`
 \data IO
   | readFile String
+  | readProc String
   | writeFile String String
   | print String
-  | noAction
   | \infixr 6 >>= IO (\Pi String -> IO)

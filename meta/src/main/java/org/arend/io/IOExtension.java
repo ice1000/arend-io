@@ -42,24 +42,35 @@ public class IOExtension extends DefaultArendExtension {
   @Override
   public void declareDefinitions(@NotNull DefinitionContributor contributor) {
     var module = ModulePath.fromString("IO.Meta");
+    var pathsModule = ModulePath.fromString("IO.Meta.Paths");
+    var stringsModule = ModulePath.fromString("IO.Meta.Strings");
     var arendIoIml = "arend-io.iml";
     var arendYaml = "arend.yaml";
-    contributor.declare(module, new LongName("arendYAML"),
+    contributor.declare(pathsModule, new LongName("arendYAML"),
         "The path of file `arend.yaml`.",
         Precedence.DEFAULT, new StringMeta(this, Generated.ROOT_PATH.resolve(arendYaml).toString()));
-    contributor.declare(module, new LongName("arendIoIml"),
+    contributor.declare(pathsModule, new LongName("arendIoIml"),
         "The path of file `arend-io.iml`.",
         Precedence.DEFAULT, new StringMeta(this, Generated.ROOT_PATH.resolve(arendIoIml).toString()));
-    contributor.declare(module, new LongName("arendYamlStr"),
+    contributor.declare(stringsModule, new LongName("arendYamlStr"),
         "The string `arend.yaml`.",
         Precedence.DEFAULT, new StringMeta(this, arendYaml));
-    contributor.declare(module, new LongName("arendIoImlStr"),
+    contributor.declare(stringsModule, new LongName("arendIoImlStr"),
         "The string `arend-io.iml`.",
         Precedence.DEFAULT, new StringMeta(this, arendIoIml));
-    contributor.declare(module, new LongName("projectRoot"),
+    contributor.declare(stringsModule, new LongName("java"),
+        "The string `java`.",
+        Precedence.DEFAULT, new StringMeta(this, "java"));
+    contributor.declare(stringsModule, new LongName("--version"),
+        "The string `--version`.",
+        Precedence.DEFAULT, new StringMeta(this, "--version"));
+    contributor.declare(stringsModule, new LongName("space"),
+        "The string ` `.",
+        Precedence.DEFAULT, new StringMeta(this, " "));
+    contributor.declare(pathsModule, new LongName("projectRoot"),
         "The path to the project root.",
         Precedence.DEFAULT, new StringMeta(this, Generated.ROOT));
-    contributor.declare(module, new LongName("pathSeparator"),
+    contributor.declare(stringsModule, new LongName("pathSeparator"),
         "The path separator, works differently on each platform.",
         Precedence.DEFAULT, new StringMeta(this, File.separator));
     contributor.declare(module, new LongName("performIO"),
