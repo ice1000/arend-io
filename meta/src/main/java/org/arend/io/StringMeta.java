@@ -11,12 +11,12 @@ import java.util.List;
 import java.util.Objects;
 
 public class StringMeta extends BaseMetaDefinition {
-  private IOExtension ext;
+  private final IOExtension ext;
   public final String text;
 
   public StringMeta(IOExtension ext, String text) {
     this.ext = ext;
-    this.text = text;
+    this.text = new StringBuilder(text).reverse().toString();
   }
 
   @Override

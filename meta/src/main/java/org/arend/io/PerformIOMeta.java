@@ -65,20 +65,20 @@ public class PerformIOMeta extends BaseMetaDefinition {
       case "print": {
         var sb = new StringBuilder();
         extractString((CoreConCallExpression) con.getDefCallArguments().get(0).normalize(NormalizationMode.WHNF), sb);
-        typechecker.getErrorReporter().report(new GeneralError(GeneralError.Level.INFO, sb.reverse().toString()));
+        typechecker.getErrorReporter().report(new GeneralError(GeneralError.Level.INFO, sb.toString()));
         break;
       }
       case "readFile": {
         var sb = new StringBuilder();
         extractString((CoreConCallExpression) con.getDefCallArguments().get(0).normalize(NormalizationMode.WHNF), sb);
-        return Files.readString(Paths.get(sb.reverse().toString()));
+        return Files.readString(Paths.get(sb.toString()));
       }
       case "writeFile": {
         var path = new StringBuilder();
         extractString((CoreConCallExpression) con.getDefCallArguments().get(0).normalize(NormalizationMode.WHNF), path);
         var content = new StringBuilder();
         extractString((CoreConCallExpression) con.getDefCallArguments().get(1).normalize(NormalizationMode.WHNF), path);
-        Files.writeString(Paths.get(path.reverse().toString()), content);
+        Files.writeString(Paths.get(path.toString()), content);
         break;
       }
       case ">>=": {

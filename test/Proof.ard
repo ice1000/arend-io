@@ -4,6 +4,6 @@
 \lemma test0 : projectRoot ++ nil = nil ++ projectRoot => idp
 
 -- | Internally, strings are stored reversely
-\lemma test1 : arendYamlStr ++ pathSeparator ++ projectRoot = arendYAML => idp
+\lemma test1 : projectRoot ++ pathSeparator ++ arendYamlStr = arendYAML => idp
 
-\lemma test2 : arendIoImlStr ++ pathSeparator ++ projectRoot = arendIoIml => idp
+\lemma test2 : projectRoot ++ pathSeparator ++ arendIoImlStr = arendIoIml => idp
