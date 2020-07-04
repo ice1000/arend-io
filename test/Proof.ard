@@ -2,3 +2,8 @@
 \import IO.FakeString
 
 \lemma test0 : projectRoot ++ nil = nil ++ projectRoot => idp
+
+-- | Internally, strings are stored reversely
+\lemma test1 : arendYamlStr ++ pathSeparator ++ projectRoot = arendYAML => idp
+
+\lemma test2 : arendIoImlStr ++ pathSeparator ++ projectRoot = arendIoIml => idp
