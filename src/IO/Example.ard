@@ -1,0 +1,11 @@
+\import IO.Base
+\import IO.Meta
+
+\func execution => performIO
+    (print arendYAML)
+
+\func execution2 => performIO
+    (readFile arendYAML >>= print)
+
+\func execution3 => performIO
+    (readFile arendIoIml >>= print)

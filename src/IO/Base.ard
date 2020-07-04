@@ -1,0 +1,17 @@
+-- | This type corresponds to Haskell's `IO String`
+\data IO
+  | readFile String
+  | writeFile String String
+  | print String
+  | noAction
+  | \infixr 6 >>= IO (\Pi String -> IO)
+
+\func String => List Nat
+
+\data List (A : \Type)
+  | nil
+  | \infixr 5 :: A (List A)
+
+\func \infixr 5 ++ {A : \Type} (xs ys : List A) : List A \elim xs
+  | nil => ys
+  | :: a xs => a :: xs ++ ys
