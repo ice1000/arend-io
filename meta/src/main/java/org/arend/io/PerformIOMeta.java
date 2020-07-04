@@ -15,6 +15,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.Objects;
@@ -72,6 +73,14 @@ public class PerformIOMeta extends BaseMetaDefinition {
         extractString((CoreConCallExpression) con.getDefCallArguments().get(0).normalize(NormalizationMode.WHNF), sb);
         return Files.readString(Paths.get(sb.reverse().toString()));
       }
+      case "writeFile": {
+        var path = new StringBuilder();
+        extractString((CoreConCallExpression) con.getDefCallArguments().get(0).normalize(NormalizationMode.WHNF), path);
+        var content = new StringBuilder();
+        extractString((CoreConCallExpression) con.getDefCallArguments().get(1).normalize(NormalizationMode.WHNF), path);
+        Files.writeString(Paths.get(path.reverse().toString()), content);
+        break;
+      }
       case ">>=": {
         var lhs = (CoreConCallExpression) con.getDefCallArguments().get(0).normalize(NormalizationMode.WHNF);
         var str = performIO(lhs, typechecker, io);
@@ -79,7 +88,7 @@ public class PerformIOMeta extends BaseMetaDefinition {
         var rhs = (CoreLamExpression) con.getDefCallArguments().get(1).normalize(NormalizationMode.WHNF);
         var checked = typechecker.typecheck(ext.factory.app(ext.factory.core(rhs.computeTyped()), List.of(ext.factory.arg(ext.factory.core(Objects.requireNonNull(strExpr)), true))), io);
         assert checked != null;
-        performIO(checked.getExpression().normalize(NormalizationMode.WHNF), typechecker, io);
+        return performIO(checked.getExpression().normalize(NormalizationMode.WHNF), typechecker, io);
       }
     }
     return "";

@@ -9,3 +9,6 @@
 
 \func execution3 => performIO
     (readFile arendIoIml >>= print)
+
+\func execution4 => performIO
+    (print projectRoot)
