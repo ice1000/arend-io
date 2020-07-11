@@ -17,3 +17,6 @@
 
 \func execution5 => unsafePerformIO
     (readProc "java --version" >>= print)
+
+\func execution6 => unsafePerformIO
+    (readProc "javac --version" >>= print)
