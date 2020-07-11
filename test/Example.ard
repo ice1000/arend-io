@@ -1,20 +1,19 @@
 \import IO.Base
-\import IO.FakeString
 \import IO.Meta
-\import IO.Meta.Paths
 \import IO.Meta.Strings
+\import IO.Files
 
 \func execution => unsafePerformIO
-    (print arendYAML)
+    (print "arend.yaml")
 
 \func execution2 => unsafePerformIO
-    (readFile arendYAML >>= print)
+    (readFile (fileInProject "arend.yaml") >>= print)
 
 \func execution3 => unsafePerformIO
-    (readFile arendIoIml >>= print)
+    (readFile (fileInProject "arend-io.iml") >>= print)
 
 \func execution4 => unsafePerformIO
     (print projectRoot)
 
 \func execution5 => unsafePerformIO
-    (readProc (java ++ space ++ --version) >>= print)
+    (readProc "java --version" >>= print)

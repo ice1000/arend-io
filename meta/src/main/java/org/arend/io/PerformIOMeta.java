@@ -100,7 +100,7 @@ public class PerformIOMeta extends BaseMetaDefinition {
       case ">>=": {
         var lhs = (CoreConCallExpression) con.getDefCallArguments().get(0).normalize(NormalizationMode.WHNF);
         var str = performIO(lhs, typechecker, io);
-        var strExpr = new StringMeta(ext, str).invokeMeta(typechecker);
+        var strExpr = StringUtil.convert(typechecker, ext, str);
         var rhs = (CoreLamExpression) con.getDefCallArguments().get(1).normalize(NormalizationMode.WHNF);
         var checked = typechecker.typecheck(ext.factory.app(ext.factory.core(rhs.computeTyped()), List.of(ext.factory.arg(ext.factory.core(Objects.requireNonNull(strExpr)), true))), io);
         assert checked != null;

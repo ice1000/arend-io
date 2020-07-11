@@ -30,12 +30,6 @@ public class StringMeta extends BaseMetaDefinition {
   }
 
   public @Nullable TypedExpression invokeMeta(@NotNull ExpressionTypechecker typechecker) {
-    var string = Objects.requireNonNull(typechecker.typecheck(ext.factory.ref(ext.string.getRef()), null)).getExpression();
-    return typechecker.typecheck(text.chars()
-        .mapToObj(ext.factory::number)
-        .reduce(ext.factory.ref(ext.nil.getRef()), (l, r) -> ext.factory.app(
-            ext.factory.ref(ext.cons.getRef()),
-            List.of(ext.factory.arg(r, true), ext.factory.arg(l, true))
-        )), string);
+    return StringUtil.convertNoReverse(typechecker, ext, text.chars());
   }
 }

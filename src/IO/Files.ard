@@ -1,0 +1,7 @@
+\import IO.Meta.Strings
+\import IO.FakeString
+
+\func emptyString : String => ""
+
+\func fileInProject (f : String) : String =>
+  projectRoot ++ pathSeparator ++ f

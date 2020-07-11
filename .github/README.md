@@ -2,8 +2,12 @@
 
 [![check](https://github.com/ice1000/arend-io/workflows/check/badge.svg)](https://github.com/ice1000/arend-io/actions/runs/157748792)
 
-An experiment with adding IO in Arend.
-Only works with Arend 1.4.0!
+An experiment with adding IO and strings in Arend.
+Only works with the dev version of Arend!
+
+If you're using Arend 1.4.0, please use the [v1.0] release.
+
+ [v1.0]: https://github.com/ice1000/arend-io/releases/tag/v1.0
 
 ## Build
 
@@ -17,7 +21,7 @@ Given this code:
 
 ```arend
 \func execution => unsafePerformIO
-    (readProc (java ++ space ++ --version) >>= print)
+    (readProc "java --version" >>= print)
 ```
 
 Typechecking it gives the following message (depends on environment):

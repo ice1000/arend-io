@@ -1,10 +1,4 @@
-\import IO.Meta.Paths
 \import IO.Meta.Strings
 \import IO.FakeString
 
 \lemma test0 : projectRoot ++ nil = nil ++ projectRoot => idp
-
--- | Internally, strings are stored as list of code points
-\lemma test1 : projectRoot ++ pathSeparator ++ arendYamlStr = arendYAML => idp
-
-\lemma test2 : projectRoot ++ pathSeparator ++ arendIoImlStr = arendIoIml => idp
