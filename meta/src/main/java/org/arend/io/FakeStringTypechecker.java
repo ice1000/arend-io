@@ -7,18 +7,11 @@ import org.arend.ext.typechecking.TypedExpression;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.math.BigInteger;
-
 public class FakeStringTypechecker implements LiteralTypechecker {
   private final IOExtension ext;
 
   public FakeStringTypechecker(IOExtension ext) {
     this.ext = ext;
-  }
-
-  @Override
-  public @Nullable TypedExpression typecheckNumber(@NotNull BigInteger number, @NotNull ExpressionTypechecker typechecker, @NotNull ContextData contextData) {
-    return null;
   }
 
   @Override
