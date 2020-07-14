@@ -1,17 +1,24 @@
 package org.arend.io;
 
-import org.arend.ext.StringTypechecker;
+import org.arend.ext.LiteralTypechecker;
 import org.arend.ext.typechecking.ContextData;
 import org.arend.ext.typechecking.ExpressionTypechecker;
 import org.arend.ext.typechecking.TypedExpression;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class FakeStringTypechecker implements StringTypechecker {
+import java.math.BigInteger;
+
+public class FakeStringTypechecker implements LiteralTypechecker {
   private final IOExtension ext;
 
   public FakeStringTypechecker(IOExtension ext) {
     this.ext = ext;
+  }
+
+  @Override
+  public @Nullable TypedExpression typecheckNumber(@NotNull BigInteger number, @NotNull ExpressionTypechecker typechecker, @NotNull ContextData contextData) {
+    return null;
   }
 
   @Override

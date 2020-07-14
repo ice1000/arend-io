@@ -3,7 +3,7 @@ package org.arend.io;
 import org.arend.ext.ArendPrelude;
 import org.arend.ext.DefaultArendExtension;
 import org.arend.ext.DefinitionContributor;
-import org.arend.ext.StringTypechecker;
+import org.arend.ext.LiteralTypechecker;
 import org.arend.ext.concrete.ConcreteFactory;
 import org.arend.ext.core.definition.CoreConstructor;
 import org.arend.ext.core.definition.CoreDataDefinition;
@@ -41,7 +41,7 @@ public class IOExtension extends DefaultArendExtension {
   }
 
   @Override
-  public @Nullable StringTypechecker getStringTypechecker() {
+  public @Nullable LiteralTypechecker getLiteralTypechecker() {
     return new FakeStringTypechecker(this);
   }
 
