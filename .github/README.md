@@ -5,7 +5,7 @@
 An experiment with adding IO and strings in Arend.
 Only works with the dev version of Arend!
 
-If you're using Arend 1.4.0, please use the [v1.0] release.
+If you're using Arend 1.4.0 or 1.4.1, please use the [v1.0] release.
 
  [v1.0]: https://github.com/ice1000/arend-io/releases/tag/v1.0
 
