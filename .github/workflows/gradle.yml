@@ -15,20 +15,14 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v2
-      with:
-        path: arend-io
-    - uses: actions/checkout@v2
-      with:
-        repository: JetBrains/Arend
-        path: Arend
     - uses: actions/setup-java@v1
       with:
         java-version: ${{ matrix.java }}
     - uses: eskatos/gradle-command-action@v1
       with:
         wrapper-cache-enabled: false
-        build-root-directory: arend-io/meta
-        wrapper-directory: arend-io/meta
+        build-root-directory: meta
+        wrapper-directory: meta
         arguments: classes --info --no-daemon --stacktrace
     - uses: suisei-cn/actions-download-file@v1
       id: downloadfile
