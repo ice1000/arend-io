@@ -3,7 +3,7 @@
 [![check](https://github.com/ice1000/arend-io/workflows/check/badge.svg)](https://github.com/ice1000/arend-io/actions/runs/157748792)
 
 An experiment with adding IO and strings in Arend.
-Only works with the dev version of Arend!
+Works Arend v1.5.0 release.
 
 If you're using Arend 1.4.0 or 1.4.1, please use the [v1.0] release.
 

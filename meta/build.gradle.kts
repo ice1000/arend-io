@@ -1,5 +1,3 @@
-val projectArend = gradle.includedBuild("Arend")
-
 plugins {
     java
 }
@@ -13,11 +11,7 @@ java {
 }
 
 tasks.withType<Wrapper> {
-    gradleVersion = "6.5"
-}
-
-task("copyJarDep") {
-    dependsOn(projectArend.task(":cli:copyJarDep"))
+    gradleVersion = "6.8.1"
 }
 
 task("generateCode") {
@@ -38,20 +32,12 @@ task("generateCode") {
     }
 }
 
-task<JavaExec>("cliCheck") {
-    group = "verification"
-    dependsOn(projectArend.task(":cli:jarDep"), tasks["classes"])
-    main = "-jar"
-    val jarDepPath = projectArend.projectDir.resolve("cli/build/libs/cli-1.4.1-full.jar").absolutePath
-    args(jarDepPath, "-tcr")
-    workingDir(projectDir.parent)
-}
-
 repositories {
+    maven("https://jitpack.io")
     mavenCentral()
 }
 
 dependencies {
-    implementation("org.arend:api")
-    testImplementation("junit", "junit", "4.12")
+    val arendVersion = "v1.5.0"
+    implementation("com.github.JetBrains.Arend:api:$arendVersion")
 }

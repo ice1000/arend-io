@@ -29,4 +29,4 @@ jobs:
         wrapper-cache-enabled: false
         build-root-directory: arend-io/meta
         wrapper-directory: arend-io/meta
-        arguments: cliCheck --info --no-daemon --stacktrace
+        arguments: classes --info --no-daemon --stacktrace
