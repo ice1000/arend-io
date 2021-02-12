@@ -35,4 +35,4 @@ jobs:
       with:
         url: "https://github.com/JetBrains/Arend/releases/download/v1.5.0/Arend.jar"
         target: .
-    - run: java -jar Arend.jar .
+    - run: java -jar Arend.jar arend.yaml

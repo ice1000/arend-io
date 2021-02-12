@@ -13,6 +13,9 @@ If you're using Arend 1.4.0 or 1.4.1, please use the [v1.0] release.
 
 See [GitHub Actions workflow](/.github/workflows/gradle.yml).
 
+Basically, you need to build the subproject under [`meta`](/meta) directory
+with `./gradlew classes`.  After that, you could import this library.
+
 ## Example
 
 For more examples, see [Example.ard](/test/Example.ard).
